@@ -1,0 +1,49 @@
+@startuml
+left to right direction
+
+actor "学生" as Student
+actor "教員" as Teacher
+
+package "el-Campus" {
+  usecase "アンケートを回答する" as ec1
+  usecase "書類提出・ダウンロードする" as ec2
+  usecase "授業予定を知る" as ec3
+  usecase "提示板を見る" as ec4
+  usecase "コンテンツ視聴" as ec5
+  usecase "試験を受ける" as ec6
+  usecase "お知らせを発行する" as ec7
+}
+
+package "UNIVERSAL PASSPORT" {
+  usecase "シラバス参照" as up1
+  usecase "履修登録" as up2
+  usecase "成績確認" as up3
+  usecase "時間割確認" as up4
+  usecase "資格希望" as up5
+}
+
+' --- 学生と機能の関係 ---
+Student --> ec1
+Student --> ec2
+Student --> ec3
+Student --> ec4
+Student --> ec5
+Student --> ec6
+
+Student --> up1
+Student --> up2
+Student --> up3
+Student --> up4
+Student --> up5
+
+' --- 教員と機能の関係 ---
+Teacher --> ec2
+Teacher --> ec3
+Teacher --> ec5
+Teacher --> ec7
+
+Teacher --> up1
+Teacher --> up3
+Teacher --> up4
+
+@enduml
